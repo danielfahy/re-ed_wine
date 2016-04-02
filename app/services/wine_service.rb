@@ -5,6 +5,7 @@ class WineService
   end
 
   def fetch # Just leaving api key here bad practice buy only sample app
+    #TODO_bg_job wite up as background job if I have time
 
     #Catch exception if wine API server is not online
     make_request

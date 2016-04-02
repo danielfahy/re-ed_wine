@@ -15,6 +15,7 @@ RSpec.describe WineService do
     end
   end
 
+  #TODO_bg_job wite up as background job if I have time
   # describe '::fetch_new_external_products' do
   #   subject { service.fetch_new_external_products}
   #   it 'Queues a job in Sidekiq to fetch a new product list from the wine API' do
