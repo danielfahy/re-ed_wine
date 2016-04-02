@@ -52,6 +52,9 @@ group :development, :test do
 
   # Test suite
   gem 'rspec-rails'
+
+  # Utility to create coherent data
+  gem 'faker'
 end
 
 group :test do
