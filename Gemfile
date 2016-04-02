@@ -35,8 +35,28 @@ gem 'bson_ext'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # Better ruby interpreter
+  gem 'pry'
+  gem 'pry-rails'
+
+  # Pry plugins
+  gem 'pry-doc'
+  gem 'pry-stack_explorer'
+  # gem 'pry-byebug'
+
+  # Factories to create models
+  gem 'fabrication',  '2.14'
+
+  # Better print for variables
+  gem 'awesome_print'
+
+  # Test suite
+  gem 'rspec-rails'
+end
+
+group :test do
+  # Database cleaner for the test running
+  gem 'database_cleaner'
 end
 
 group :development do
