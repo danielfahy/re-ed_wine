@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.paginate(:page => params[:page])
   end
 
   # GET /products/1
@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  protected
+  protected 
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])

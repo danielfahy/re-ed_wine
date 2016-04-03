@@ -28,6 +28,11 @@ gem 'bson_ext'
 # HTTP helper make
 gem 'httparty'
 
+# Pagination gem
+gem 'will_paginate', '~> 3.0.6'
+# Needed because mongoid doesn't have paginate method build in
+gem "will_paginate_mongoid"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
