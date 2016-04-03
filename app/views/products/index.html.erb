@@ -4,8 +4,7 @@
 
 <%= form_tag products_path, :method => 'get', :id => "products_search" do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by name" %>
   </p>
 <% end %>
 <div id="products"><%= render 'list' %></div>
