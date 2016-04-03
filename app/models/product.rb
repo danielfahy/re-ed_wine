@@ -1,12 +1,14 @@
 class Product
+  include ActionView::Helpers::SanitizeHelper
   include Mongoid::Document
 
   field :name, type: String
   field :description, type: String, default: ''
   field :search_slug, type: String
   field :wine_id, type: Integer
-  index( searchable_slug: 1)
+  index( alpha_slug: 1) # easily add description to search results later if required
   validates_presence_of :name
+  before_save :clean_description
 
   def self.search(text)
     if text
@@ -18,14 +20,10 @@ class Product
 
   def short_description
     if description.length < 30
-      clean_description
+      description
     else
-      clean_description.slice(0..27) << '...'
+      description.slice(0..27) << '...'
     end
-  end
-
-  def clean_description # removes any html tags in the description
-    description.gsub( %r{</?[^>]+?>}, '' )
   end
 
   def page # Should be in presenter
@@ -41,5 +39,11 @@ class Product
     else
       '/assets/own_wine.jpg'
     end
+  end
+
+  protected
+
+  def clean_description
+    self.description = description.gsub( %r{</?[^>]+?>}, '' )
   end
 end
