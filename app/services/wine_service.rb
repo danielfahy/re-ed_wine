@@ -6,7 +6,7 @@ class WineService
 
   def fetch
     #TODO_bg_job wite up as background job if I have time
-    make_request(500)
+    make_request(10)
     save_new_products if @response.code == 200
   end
 
@@ -14,7 +14,7 @@ class WineService
 
   def make_request(number)
     begin     #Catch exception if wine API server is not online could add others
-      @response = HTTParty.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?size=#{number}&apikey=#{api_key}', format: :json)
+      @response = HTTParty.get("http://services.wine.com/api/beta2/service.svc/JSON/catalog?size=#{number}&apikey=#{api_key}", format: :json)
     rescue Timeout::Error
       puts 'Request Timed out, please try again later'
     end
