@@ -7,8 +7,9 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @product.description %>
+  <%= @product.clean_description %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path << @product.page %>
+

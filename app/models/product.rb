@@ -19,4 +19,11 @@ class Product
   def clean_description # removes any html tags in the description
     description.gsub( %r{</?[^>]+?>}, '' )
   end
+
+  def page # Should be in presenter
+    i = Product.where(:name.lt => name).order_by(:name => 'asc').count
+    page = i /  WillPaginate.per_page
+    page += 1
+    "?page=#{page}"
+  end
 end

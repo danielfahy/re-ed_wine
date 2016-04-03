@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.paginate(:page => params[:page])
+    @products = Product.all.order_by(:name => 'asc').paginate(page_param)
   end
 
   # GET /products/1
@@ -55,13 +55,14 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
+    binding.pry
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url << @product.page, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  protected 
+  protected
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
@@ -70,5 +71,9 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description)
+    end
+
+    def page_param
+      params.permit(:page)
     end
 end
