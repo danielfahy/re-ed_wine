@@ -16,7 +16,7 @@ class Product
     end
   end
 
-  def clean_description
+  def clean_description # removes any html tags in the description
     description.gsub( %r{</?[^>]+?>}, '' )
   end
 end
