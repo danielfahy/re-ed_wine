@@ -8,6 +8,14 @@ class Product
   index( searchable_slug: 1)
   validates_presence_of :name
 
+  def self.search(text)
+    if text
+      where(name: /#{text}/i)
+    else
+      scoped
+    end
+  end
+
   def short_description
     if description.length < 30
       clean_description

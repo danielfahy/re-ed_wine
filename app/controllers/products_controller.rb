@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.order_by(:name => 'asc').paginate(page_param)
+    @products = Product.search(index_params['search']).order_by(:name => 'asc').paginate(index_params )
   end
 
   # GET /products/1
@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:name, :description)
     end
 
-    def page_param
-      params.permit(:page)
+    def index_params
+      params.permit(:page,:search)
     end
 end
