@@ -8,6 +8,9 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td> No produts found </td>
+    </tr>
     <% @products.each do |product| %>
       <tr>
         <td><%= image_tag(product.image_url, size: "40x40", alt: product.name) %></td>
