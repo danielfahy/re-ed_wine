@@ -8,9 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td> No produts found </td>
-    </tr>
+    <% if @products.empty? %>
+      <tr>
+        <td> No produts found </td>
+      </tr>
+    <% end %>
     <% @products.each do |product| %>
       <tr>
         <td><%= image_tag(product.image_url, size: "40x40", alt: product.name) %></td>

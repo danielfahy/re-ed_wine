@@ -4,8 +4,8 @@ class WineService
     Product.where(:wine_id.ne => nil).delete_all
   end
 
-  def fetch_new_products
-    #If fetching thousands would use background jobs
+  def fetch_new_products #If fetching thousands would use background jobs
+    delete_all_external_products
     make_request(500)
     save_new_products if @response.code == 200
   end
