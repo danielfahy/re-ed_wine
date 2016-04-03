@@ -1,14 +1,16 @@
+SLUGIFY_PROC = Proc.new {|s| s.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')}
 class Product
   include ActionView::Helpers::SanitizeHelper
   include Mongoid::Document
 
   field :name, type: String
   field :description, type: String, default: ''
-  field :search_slug, type: String
+  field :alpha_slug, type: String
   field :wine_id, type: Integer
   index( alpha_slug: 1) # easily add description to search results later if required
   validates_presence_of :name
   before_save :clean_description
+  before_save :generate_slug
 
   def self.search(text)
     if text
@@ -45,5 +47,9 @@ class Product
 
   def clean_description
     self.description = description.gsub( %r{</?[^>]+?>}, '' )
+  end
+
+  def generate_slug
+    self.alpha_slug = SLUGIFY_PROC.call(name) # also removes non ascii characters
   end
 end

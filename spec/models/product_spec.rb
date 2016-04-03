@@ -9,6 +9,11 @@ RSpec.describe Product, type: :model do
         product.save
         expect(product.description.include? '<p>').to eq false
       end
+      it 'generates a lowercase slug of the name' do
+        product.name = 'BaNAnAs'
+        product.save
+        expect(product.alpha_slug).to eq 'bananas'
+      end
     end
   end
 end
