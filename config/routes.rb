@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :products
-
+    get 'manage' => 'external_products#index'
+    post 'delete_all' => 'external_products#destroy_all'
+    post 'fetch_more' => 'external_products#fetch_more'
   # Example resource route with options:
   #   resources :products do
   #     member do

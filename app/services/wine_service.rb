@@ -4,9 +4,9 @@ class WineService
     Product.where(:wine_id.ne => nil).delete_all
   end
 
-  def fetch
-    #TODO_bg_job wite up as background job if I have time
-    make_request(10)
+  def fetch_new_products
+    #If fetching thousands would use background jobs
+    make_request(500)
     save_new_products if @response.code == 200
   end
 
@@ -33,7 +33,7 @@ class WineService
     true
   end
 
-  def bad_return_code? # TODO implement other statuses
+  def bad_return_code? #implement other statuses
     @response['Status']['ReturnCode'] != 0
   end
 
