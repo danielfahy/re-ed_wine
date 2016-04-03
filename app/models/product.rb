@@ -26,4 +26,12 @@ class Product
     page += 1
     "?page=#{page}"
   end
+
+  def image_url
+    if wine_id.present?
+      "http://cache.wine.com/labels/#{wine_id}l.jpg"
+    else
+      '/assets/own_wine.jpg'
+    end
+  end
 end
