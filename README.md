@@ -10,7 +10,7 @@
     * Example (d'Arenberg was annoyingly being put at the end of the list)
 1. Navigation
     * The image for items added manually is different to that of the others (natural distinction)
-    * The user can navigate to a product, CRUD it, and return to the page which that product is on is in the overall paginated list. It acts like memory for the user
+    * The user can navigate to a product, CRUD it, and return to the page number, which that product is in, in the overall paginated list. It acts like memory for the user
     * I imagine this would be great if editing a number of similar products
     * I've included a description preview so the user can see if its worth visiting the show page from the index page
 1. Search
