@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Wine List</h1>
+<h1>Wine List</h1> <%=link_to "Import/Delete Products", controller: "external_products", action: "index"%>
 
 <%= form_tag products_path, :method => 'get', :id => "products_search" do %>
   <p>

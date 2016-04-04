@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search(index_params['search']).order_by(:name => 'asc').paginate(index_params )
+    @products = Product.search(index_params['search']).order_by(:alpha_slug => 'asc').paginate(index_params )
   end
 
   # GET /products/1
@@ -55,9 +55,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    binding.pry
     respond_to do |format|
-      format.html { redirect_to products_url << @product.page, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url << @product.page_query, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

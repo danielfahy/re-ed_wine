@@ -28,8 +28,8 @@ class Product
     end
   end
 
-  def page # Should be in presenter
-    i = Product.where(:name.lt => name).order_by(:name => 'asc').count
+  def page_query # This isn't scalable but fine for this number of documents
+    i = Product.where(:name.lt => name).order_by(:alpha_slug => 'asc').count
     page = i /  WillPaginate.per_page
     page += 1
     "?page=#{page}"

@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Manage Wine.com Data</h1>
+<%=link_to "Product List", controller: "products", action: "index"%>
 
 <%= button_to "Destroy all",
      { class: 'sk-circle', :controller => :external_products, :action=> :destroy_all},
      { :remote => true, method: :post, :id => 'delete_all' }
  %>
 
-<%= button_to "Fetch More",
+<%= button_to "Fetch New Batch",
      { class: 'sk-circle', :controller => :external_products, :action=> :destroy_all},
      { :remote => true, method: :post, :id => 'fetch_more' }
  %>
